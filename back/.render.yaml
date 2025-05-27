@@ -2,8 +2,15 @@ services:
   - type: web
     name: marryme-backend
     env: python
-    buildCommand: ""
-    startCommand: gunicorn weddingProject.wsgi
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py makemigrations
+      python manage.py migrate
+      python manage.py update_all_data
+      python scripts/generate_dummy_users.py
+      python scripts/generate_dummy_wishlist.py
+      python manage.py import_metal_prices
+    startCommand: gunicorn weddingProject.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: weddingProject.settings
