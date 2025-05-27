@@ -218,14 +218,14 @@ const formatTitle = (title) => {
 
 onMounted(async () => {
   try {
-    const depositRes = await axios.get('http://127.0.0.1:8000/api/products/deposits/')
+    const depositRes = await axios.get('https://marryme-4mqi.onrender.com/api/products/deposits/')
     depositProducts.value = depositRes.data
   } catch (err) {
     console.error('❌ 예금 데이터 오류:', err)
   }
 
   try {
-    const savingRes = await axios.get('http://127.0.0.1:8000/api/products/savings/')
+    const savingRes = await axios.get('https://marryme-4mqi.onrender.com/api/products/savings/')
     savingProducts.value = savingRes.data
   } catch (err) {
     console.error('❌ 적금 데이터 오류:', err)
@@ -233,7 +233,7 @@ onMounted(async () => {
 
   if (isLoggedIn.value) {
     try {
-      const res = await axios.get('http://127.0.0.1:8000/api/accounts/mypage/', {
+      const res = await axios.get('https://marryme-4mqi.onrender.com/api/accounts/mypage/', {
         headers: {
           Authorization: `Token ${localStorage.getItem('token')}`
         }
@@ -259,7 +259,7 @@ const openDetail = async (product, option = null) => {
   currentProduct.value = product
 
   try {
-    const res = await axios.get(`http://127.0.0.1:8000/api/products/${productType.value}s/${productId}/`)
+    const res = await axios.get(`https://marryme-4mqi.onrender.com/api/products/${productType.value}s/${productId}/`)
     detail.value = res.data
     showDialog.value = true
   } catch (err) {
@@ -276,7 +276,7 @@ const addToWishlistOption = async (option) => {
   const key = `${productType.value}-${option.id}`
   const isWished = wishlist.value.has(key)
 
-  const url = `http://127.0.0.1:8000/api/products/wishlist/${productType.value}-option/${option.id}/toggle/`
+  const url = `https://marryme-4mqi.onrender.com/api/products/wishlist/${productType.value}-option/${option.id}/toggle/`
 
   try {
     await axios.post(url, {}, {
@@ -306,7 +306,7 @@ const fetchRecommended = async () => {
   }
 
   recommendLoading.value = true
-  const url = `http://127.0.0.1:8000/api/recommend/${productType.value}/`
+  const url = `https://marryme-4mqi.onrender.com/api/recommend/${productType.value}/`
   try {
     const res = await axios.get(url, {
       headers: {

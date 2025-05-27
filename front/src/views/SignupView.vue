@@ -109,7 +109,7 @@ if (form.profile_img && form.profile_img instanceof File) {
 }
 
   try {
-    const res = await axios.post('http://127.0.0.1:8000/api/auth/registration/', formData)
+    const res = await axios.post('https://marryme-4mqi.onrender.com/api/auth/registration/', formData)
     console.log('회원가입 성공:', res.data)
     alert('회원가입이 완료되었습니다!')
     router.push('/')

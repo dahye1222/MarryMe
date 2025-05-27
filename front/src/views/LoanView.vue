@@ -212,7 +212,7 @@ const wishlist = ref(new Set())
 // 찜 토글
 const toggleWishlist = async (loan) => {
   const isWished = wishlist.value.has(loan.id)
-  const url = `http://127.0.0.1:8000/api/products/wishlist/loans/${loan.id}/toggle/`
+  const url = `https://marryme-4mqi.onrender.com/api/products/wishlist/loans/${loan.id}/toggle/`
 
   try {
     await axios.post(url, {}, {
@@ -238,7 +238,7 @@ const toggleWishlist = async (loan) => {
 const fetchRecommendedLoans = async () => {
   recommendLoading.value = true
   try {
-    const res = await axios.get('http://127.0.0.1:8000/api/recommend/loans/', {
+    const res = await axios.get('https://marryme-4mqi.onrender.com/api/recommend/loans/', {
       headers: {
         Authorization: `Token ${localStorage.getItem('token')}`
       }
@@ -256,14 +256,14 @@ const fetchRecommendedLoans = async () => {
 // 대출 전체 조회 + 찜 목록 로딩
 onMounted(async () => {
   try {
-    const res = await axios.get('http://127.0.0.1:8000/api/products/loans/')
+    const res = await axios.get('https://marryme-4mqi.onrender.com/api/products/loans/')
     loanProducts.value = res.data
   } catch (err) {
     console.error('❌ 대출상품 전체 조회 실패:', err)
   }
 
   try {
-    const res = await axios.get('http://127.0.0.1:8000/api/accounts/mypage/', {
+    const res = await axios.get('https://marryme-4mqi.onrender.com/api/accounts/mypage/', {
       headers: {
         Authorization: `Token ${localStorage.getItem('token')}`
       }
@@ -276,7 +276,7 @@ onMounted(async () => {
 
 const openDetail = async (loan) => {
   try {
-    const res = await axios.get(`http://127.0.0.1:8000/api/products/loans/${loan.id}/`)
+    const res = await axios.get(`https://marryme-4mqi.onrender.com/api/products/loans/${loan.id}/`)
     detail.value = res.data.product
     repaymentResults.value = []
     loanAmount.value = ''
@@ -294,7 +294,7 @@ const fetchSimulation = async () => {
   }
 
   try {
-    const res = await axios.get(`http://127.0.0.1:8000/api/products/loans/${detail.value.id}/`, {
+    const res = await axios.get(`https://marryme-4mqi.onrender.com/api/products/loans/${detail.value.id}/`, {
       params: {
         loan_amount: loanAmount.value,
         months: months.value

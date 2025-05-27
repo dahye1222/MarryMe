@@ -118,12 +118,12 @@ const getProfileImgUrl = (path) => {
   if (!path) return '/default_profile.png'
   // 로컬 asset이거나 data URI인 경우
   if (path.startsWith('http') || path.startsWith('data:')) return path
-  return `http://localhost:8000${path}`  // /media/... 등 처리
+  return `https://marryme-4mqi.onrender.com${path}`  // /media/... 등 처리
 }
 
 onMounted(async () => {
   try {
-    const res = await axios.get('http://localhost:8000/api/accounts/mypage/', {
+    const res = await axios.get('https://marryme-4mqi.onrender.com/api/accounts/mypage/', {
       headers: {
         Authorization: `Token ${localStorage.getItem('token')}`,
       },

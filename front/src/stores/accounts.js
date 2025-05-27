@@ -10,7 +10,7 @@ export const useAccountStore = defineStore('account', () => {
   const logIn = async (payload) => {
     const { username, password } = payload
     try {
-      const res = await axios.post('http://127.0.0.1:8000/api/auth/login/', {
+      const res = await axios.post('https://marryme-4mqi.onrender.com/api/auth/login/', {
         username,
         password
       })
