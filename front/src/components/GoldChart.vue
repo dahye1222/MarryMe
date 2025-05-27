@@ -53,7 +53,7 @@ const rawData = { gold: [], silver: [] }
 
 async function loadJson() {
   const fetchJson = async (metal) => {
-    const res = await fetch(`http://localhost:8000/api/gold-prices/metal-prices/?metal=${metal}`)
+    const res = await fetch(`https://marryme-4mqi.onrender.com/api/gold-prices/metal-prices/?metal=${metal}`)
     if (!res.ok) throw new Error(`${metal} 가격 데이터를 불러오지 못했습니다.`)
     return await res.json()
   }
