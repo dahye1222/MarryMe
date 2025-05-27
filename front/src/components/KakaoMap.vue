@@ -105,7 +105,7 @@ onMounted(async () => {
     console.log('카카오맵 스크립트 동적 로드 시작')
     await new Promise((resolve, reject) => {
       const script = document.createElement('script')
-      script.src = 'https://dapi.kakao.com/v2/maps/sdk.js?appkey=여기에_본인_앱키&autoload=false&libraries=services'
+      script.src = 'https://dapi.kakao.com/v2/maps/sdk.js?appkey=a071a72ee9d1089b0146695f228fdbaa&autoload=false&libraries=services'
       script.onload = () => {
         console.log('카카오맵 스크립트 로드 완료')
         window.kakao.maps.load(resolve)
