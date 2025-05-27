@@ -3,11 +3,11 @@ services:
     name: marryme-backend
     env: python
     buildCommand: ""
-    startCommand: gunicorn back.wsgi
+    startCommand: gunicorn weddingProject.wsgi
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: back.settings
+        value: weddingProject.settings
       - key: SECRET_KEY
-        value: your-secret-key
+        value: your-actual-secret-key
       - key: ALLOWED_HOSTS
         value: .onrender.com
