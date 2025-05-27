@@ -23,7 +23,7 @@ const token = localStorage.getItem('token')
 if (token) {
   axios.defaults.headers.common.Authorization = `Token ${token}`
 }
-
+axios.defaults.baseURL = 'https://marryme-4mqi.onrender.com'
 app.use(router)
 app.use(createVuetify({ components, directives }))
 
