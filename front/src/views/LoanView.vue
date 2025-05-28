@@ -32,7 +32,7 @@
             </div>
 
             <v-card-title>
-              <strong>{{ loan.fin_prdt_nm }}</strong>
+              <strong v-html="formatTitle(loan.fin_prdt_nm)"></strong>
             </v-card-title>
             <v-card-subtitle>
               {{ loan.kor_co_nm }}
@@ -209,6 +209,11 @@ const recommendLoading = ref(false)
 
 const wishlist = ref(new Set())
 
+const formatTitle = (title) => {
+  const limit = 13.5
+  if (title.length <= limit) return title
+  return title.slice(0, limit) + '<br>' + title.slice(limit)
+}
 // 찜 토글
 const toggleWishlist = async (loan) => {
   const isWished = wishlist.value.has(loan.id)
